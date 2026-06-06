@@ -12,22 +12,22 @@ export class ProgramTypeController {
   private readonly logger = new Logger(ProgramTypeController.name);
   constructor(private readonly programTypeService: ProgramTypeService) {}
 
-  @MessagePattern({ cmd: 'create_program' })
+  @MessagePattern({ cmd: 'create_program_type' })
   async create(@Payload() data: CreateProgramTypeRequestDto) {
     return this.programTypeService.create(data);
   }
 
-  @MessagePattern({ cmd: 'find_all_programs' })
+  @MessagePattern({ cmd: 'find_all_program_types' })
   findAll(query: PaginationQueryDto) {
     return this.programTypeService.findAll(query);
   }
 
-  @MessagePattern({ cmd: 'find_one_program' })
+  @MessagePattern({ cmd: 'find_one_program_type' })
   findOne(@Payload() id: number) {
     return this.programTypeService.findOne(id);
   }
 
-  @MessagePattern({ cmd: 'update_program' })
+  @MessagePattern({ cmd: 'update_program_type' })
   update(
     @Payload()
     payload: {
@@ -38,7 +38,7 @@ export class ProgramTypeController {
     return this.programTypeService.update(payload.id, payload.updateData);
   }
 
-  @MessagePattern({ cmd: 'remove_program' })
+  @MessagePattern({ cmd: 'remove_program_type' })
   remove(@Payload() id: number) {
     return this.programTypeService.remove(id);
   }
