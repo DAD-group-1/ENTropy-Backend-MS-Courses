@@ -1,0 +1,8 @@
+services:
+  entropy-backend-ms-courses:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: entropy_backend_ms_courses
+    ports:
+      - '3004:3004'
