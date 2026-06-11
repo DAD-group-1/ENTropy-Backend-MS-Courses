@@ -14,16 +14,19 @@ export class CourseController {
 
   @MessagePattern({ cmd: 'create_course' })
   async create(@Payload() data: CreateCourseRequestDto) {
+    this.logger.log('Received create course request');
     return this.courseService.create(data);
   }
 
   @MessagePattern({ cmd: 'find_all_courses' })
   findAll(query: PaginationQueryDto) {
+    this.logger.log('Received find all courses request');
     return this.courseService.findAll(query);
   }
 
   @MessagePattern({ cmd: 'find_one_course' })
   findOne(@Payload() id: number) {
+    this.logger.log('Received find one course request for id: ' + id);
     return this.courseService.findOne(id);
   }
 
@@ -35,11 +38,13 @@ export class CourseController {
       updateData: UpdateCourseRequestDto;
     },
   ) {
+    this.logger.log('Received update course request for id: ' + payload.id);
     return this.courseService.update(payload.id, payload.updateData);
   }
 
   @MessagePattern({ cmd: 'remove_course' })
   remove(@Payload() id: number) {
+    this.logger.log('Received remove course request for id: ' + id);
     return this.courseService.remove(id);
   }
 }
